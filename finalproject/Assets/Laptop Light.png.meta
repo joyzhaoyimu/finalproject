@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c52b61cd6c1a640a3bacf05054039ee7
+guid: 936809571009f4c00810346085405771
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5709584354267142058
-    second: Laptop Dark_0
+      213: 883576508023539379
+    second: Laptop Light_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Laptop Dark_0
+      name: Laptop Light_0
       rect:
         serializedVersion: 2
         x: 0
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa7983338b48c3f40800000000000000
-      internalID: 5709584354267142058
+      spriteID: 3b68f941728134c00800000000000000
+      internalID: 883576508023539379
       vertices: []
       indices: 
       edges: []

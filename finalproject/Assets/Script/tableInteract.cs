@@ -10,6 +10,7 @@ public class tableInteract : InteractableObject
 
     public void SetItemStatus(int id, bool status)
     {
+        Debug.Log($"id:{id}, status:{status}");
         items[id].SetActive(status);
         itemCount++;
     }

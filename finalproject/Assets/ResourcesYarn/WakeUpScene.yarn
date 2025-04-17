@@ -1,24 +1,47 @@
 ﻿title: Start
 
 ---
-Narrator: Your daughter has depression disorder. She has library volunteer shift today.
-Narrator: You are trying to wake her up.
-Narrator: You have to wake her up before 8:30, or she will be late.
+Narrator: Your daughter Lucy has been going through a difficult time after diagnosed with depression disorder.
+Narrator: Lately, even getting out of bed has felt like a heavy task for her.
+Narrator: This morning, she's supposed to help out at the library before 8:30.
+Narrator: Try to wake her up — with care.
 
+// <<showPromptCanvas>>
 
 
 ===
 
 title: WakeUp1
 ---
-Player:  Hey Lucy, time to wake up.  
+Player: You: Hey Lucy, time to wake up.  
+Player: You: You have your volunteer shift at the library today.  
+
+===
+title: PatientReply
+---
+Player: Hey Lucy, time to wake up.  
 Player: You have your volunteer shift at the library today.  
 
 ===
+
 
 title: Curtain
 ---
 Narrator: Lucy seems wasn't able to wake up.
 -> Curtain1
+    <<jump Curtain1>>
 -> Curtain2
+    <<jump Curtain2>>
+===
+
+title: Curtain1
+---
+Player: xx 
+
+===
+
+title: Curtain2
+---
+Player: xll
+
 ===

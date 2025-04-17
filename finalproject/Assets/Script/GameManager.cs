@@ -1,88 +1,102 @@
+using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering.Universal;
 using UnityEngine;
-using UnityEngine.Rendering;
+using Yarn.Unity;
 
 [System.Serializable]
 public struct InteractableSequence
 {
-   public List<InteractableObject> interactables;
+    public List<InteractableObject> interactables;
 }
+
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    [Header("Dialogue")]
     public bool isDoingDialogue = false;
+    public DialogueRunner dialogueRunner;
+
+    [Header("Scene Elements")]
     public GameObject curtain;
     public GameObject bed;
     public GameObject door;
     public GameObject background;
+
+    [Header("Sprites")]
     public Sprite spritecurtain;
     public Sprite spritebed;
     public Sprite spritedoor;
     public Sprite spriteBackground;
+
+    [Header("Prompt UI")]
+    public GameObject promptCanvas; // 拖入提示图像或Canvas
+
+    [Header("Interactable Sequences")]
     public List<InteractableSequence> interactables = new List<InteractableSequence>();
     private int currentIndex = 0;
-    private static GameManager instance;
-    public static GameManager Instance { 
-        get {
-            if (instance == null)
-            {
-                instance = GameObject.FindObjectOfType<GameManager>();
-
-                if(instance == null)
-                {
-                    GameObject go = new GameObject("GameManager");
-                    instance = go.AddComponent<GameManager>();
-                }
-                DontDestroyOnLoad(instance.gameObject);
-            }
-            return instance;
-        }
-
-    }
 
     private void Awake()
     {
-        if (instance == null)
+        // Singleton 初始化
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
 
-         foreach(InteractableObject interactable in interactables[currentIndex].interactables){
-            interactable.interactionEnabled = true;
+        // 初始化当前互动序列
+        if (interactables.Count > 0)
+        {
+            foreach (InteractableObject interactable in interactables[currentIndex].interactables)
+            {
+                interactable.interactionEnabled = true;
+            }
         }
+
+        // 开始对话
+        dialogueRunner.StartDialogue("Start");
     }
 
-
-    public void ChangeDialogueStatus(bool status){
+    // 外部控制对话状态（禁用移动、交互）
+    public void ChangeDialogueStatus(bool status)
+    {
         isDoingDialogue = status;
     }
 
-    public void OnInteractionComplete(){
-        if(currentIndex == interactables.Count - 1){
-           // Handle Curtain Logic Here 
+    // 当互动完成，切换下一阶段
+    public void OnInteractionComplete()
+    {
+        if (currentIndex == interactables.Count - 1)
+        {
+            // 触发最终效果，例如拉开窗帘、显示床铺等
             background.GetComponent<SpriteRenderer>().sprite = spriteBackground;
             curtain.GetComponent<SpriteRenderer>().sprite = spritecurtain;
             bed.GetComponent<SpriteRenderer>().sprite = spritebed;
             door.GetComponent<SpriteRenderer>().sprite = spritedoor;
-
         }
-        foreach(InteractableObject interactable in interactables[currentIndex].interactables){
+
+        // 禁用当前交互物体
+        foreach (InteractableObject interactable in interactables[currentIndex].interactables)
+        {
             interactable.interactionEnabled = false;
         }
+
         currentIndex++;
-        if(currentIndex <= interactables.Count - 1){
-           foreach(InteractableObject interactable in interactables[currentIndex].interactables){
-            interactable.interactionEnabled = true;
-        }
-        }
 
+        if (currentIndex <= interactables.Count - 1)
+        {
+            foreach (InteractableObject interactable in interactables[currentIndex].interactables)
+            {
+                interactable.interactionEnabled = true;
+            }
+        }
     }
-
 
 
 }

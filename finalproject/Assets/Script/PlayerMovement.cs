@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using Yarn.Unity;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     public IInteractable interactable;
 
+    public LineView lineView;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,9 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(GameManager.Instance.isDoingDialogue){
-            return;
-        }
+        
         // 获取输入
         movement.x = Input.GetAxisRaw("Horizontal"); // A / D or Left / Right
         movement.y = Input.GetAxisRaw("Vertical");   // W / S or Up / Down
@@ -45,15 +46,29 @@ public class PlayerMovement : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = leftSprite;
             }
         }
+                
+        if(GameManager.Instance.isDoingDialogue){
+            return;
+        }
 
         // 检测交互
         if(Input.GetKey(KeyCode.E)){
-            Debug.Log("Press E");
+            // Debug.Log("Press E");
+            // if(interactable is ItemInteract){
+            // Debug.Log((interactable as ItemInteract).itemID);
+            // }
             if(interactable != null && interactable.CanInteract()){
                 Debug.Log("Interacting with: Bed");
                 interactable.Oninteract();
             }
         }
+
+
+        if(Input.GetKey(KeyCode.Space))
+        {
+            lineView.UserRequestedViewAdvancement();
+        }
+
 
     }
 
