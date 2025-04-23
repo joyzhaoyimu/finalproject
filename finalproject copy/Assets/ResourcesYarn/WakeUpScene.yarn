@@ -1,0 +1,71 @@
+﻿title: Start
+
+---
+Narrator: Your daughter Lucy has been going through a difficult time after diagnosed with depression disorder.
+Narrator: Lately, even getting out of bed has felt like a heavy task for her.
+Narrator: This morning, she's supposed to help out at the library before 8:30.
+Narrator: Try to wake her up — with care.
+
+
+===
+
+title: WakeUp1
+---
+Player: YOU: "Hey Lucy, it's time to wake up.  "
+Player: YOU: "You've got your volunteer shift at the library this morning."
+Player: ...
+Player: YOU: "Lucy, you need to get up now, or you'll be late."
+Narrator: You hear no response.
+
+<<wait 1>>
+
+Narrator: Lucy's room looks a bit messy.  
+Narrator: Maybe you could tidy things up for her.
+
+
+===
+
+title: AfterCleanUp
+---
+Lucy: LUCY: "Ughh...please, can you stop doing that?"
+Player: YOU: "Lucy, you need to get up now. It's almost 8:30."
+
+Narrator: You feel a deep worry for Lucy. More than anything, you hope she can return to a normal life again.  
+Narrator: But the room feels heavy, dim, and closed off.  
+Narrator: You glance at the window. Maybe letting in some light will help.  
+
+===
+title: Ending
+---
+
+Lucy: LUCY: "No. Don't."
+
+Narrator: Lucy turns away, burying her face deeper into the pillow.
+
+Player: YOU: "What? I was just trying to let in some light..."
+
+Player: YOU: "I thought it might help."
+
+Narrator: She doesn't respond.
+
+Narrator: Lucy doesn't respond. She's still curled up in bed, unmoving.  
+Narrator: It's almost 8:30 — she's going to be late for her shift.  
+What will you do?
+
+-> Stay in the room and try helping her to wake up.
+    <<jump Ending1>>
+-> Leave the room for now and give her space.
+    <<jump Ending2>>
+===
+
+
+title: Ending1
+---
+Narrator: Lucy failed to wake up in time for her shift.
+
+===
+
+title: Ending2
+---
+Player: After you left the room, Lucy slowly wakes up and successfully catch the bus to the library.
+===
