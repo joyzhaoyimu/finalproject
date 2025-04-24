@@ -7,6 +7,7 @@ public class DoorInteractSimple : MonoBehaviour
     public GameObject promptToShow;     // 另一个提示 UI（Canvas 或 Image）
     public GameObject lucyBarUI; 
 
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
