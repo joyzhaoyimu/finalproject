@@ -7,9 +7,10 @@ public class LucyBarController : MonoBehaviour
     public Slider emotionSlider; // 绑定Slider，而不是Image
 
     [Range(0f, 1f)]
-    public float currentValue = 0.45f;
+    public float currentValue = 0.55f;
 
-    public float decreasePerPress = 0.05f;
+    public float decreasePerPress = 0.03f;
+
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class LucyBarController : MonoBehaviour
         UpdateBar();
     }
 
-    void UpdateBar()
+    public void UpdateBar()
     {
         if (emotionSlider != null)
         {

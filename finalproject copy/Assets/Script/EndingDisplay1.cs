@@ -16,5 +16,6 @@ public class EndingDisplay1 : MonoBehaviour
             Debug.Log("✅ EndingDisplay1 Canvas triggered at end of Ending1");
         }
 
+
     }
 }
